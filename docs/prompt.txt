@@ -1,0 +1,72 @@
+# Tổng hợp các yêu cầu dự án
+
+## Yêu cầu ban đầu
+- Xây dựng hệ thống microservices sử dụng Spring Boot
+- Tạo các service: user-service, file-service, notification-service, gateway-service, config-service, eureka-server
+- Sử dụng Spring Security và JWT cho xác thực và phân quyền
+
+## Yêu cầu về File Service
+- Xây dựng module quản lý file tương tự Google Drive
+- Cho phép người dùng tải lên, tải xuống, chia sẻ và quản lý file
+- Hỗ trợ phân cấp thư mục và phân quyền truy cập
+- Tích hợp với User Service để xác thực và phân quyền
+- Hỗ trợ tìm kiếm file theo tên, loại file và thư mục
+- Cho phép đánh dấu file là công khai hoặc riêng tư
+- Tích hợp với Notification Service để thông báo khi file được chia sẻ
+
+### API File Service
+- API tạo thư mục mới
+- API tải lên file mới vào thư mục
+- API tải xuống file
+- API lấy danh sách file/thư mục trong một thư mục
+- API tìm kiếm file theo tên, loại file và thư mục
+- API chia sẻ file/thư mục với người dùng khác
+- API quản lý quyền truy cập file/thư mục
+- API lấy danh sách file được chia sẻ với người dùng
+- API lấy danh sách file do người dùng sở hữu
+
+## Yêu cầu về User Service
+- Quản lý người dùng, vai trò, quyền hạn
+- Xác thực và phân quyền sử dụng JWT
+- Quản lý module, menu và router
+- Phân quyền người dùng theo module và menu
+
+## Yêu cầu về API
+
+### API Đăng ký người dùng
+- Cập nhật RegisterRequest để thêm trường moduleIds
+- Cập nhật UserMapper để bỏ qua trường moduleRoles khi chuyển đổi từ RegisterRequest sang User entity
+- Cập nhật AuthService để xử lý moduleIds khi đăng ký người dùng
+- Kiểm tra và cập nhật API đăng ký người dùng trong AuthController
+
+### API Phân quyền người dùng
+- Cập nhật API phân quyền người dùng theo module và menu
+- Tạo API để lấy menu và router theo module và quyền của người dùng
+- Tạo API để lấy danh sách menu dạng cây (tree) cho mỗi người dùng dựa trên module được gán
+
+### Yêu cầu về Menu và Router
+- Tạo cấu trúc dữ liệu cho menu dạng cây (MenuTreeDto)
+- Tạo mapper để chuyển đổi từ danh sách MenuDto sang cấu trúc cây MenuTreeDto
+- Cập nhật ModuleMenuDto để bao gồm cấu trúc cây menu
+- Tạo các API endpoint để lấy menu dạng cây cho người dùng
+
+## Yêu cầu về giao diện người dùng cho File Service
+- Xây dựng giao diện quản lý file tương tự Google Drive
+- Hiển thị cấu trúc thư mục dạng cây bên trái màn hình
+- Hiển thị danh sách file/thư mục dạng lưới hoặc danh sách
+- Hỗ trợ kéo thả (drag & drop) để tải lên file và di chuyển file giữa các thư mục
+- Hiển thị menu ngữ cảnh (context menu) khi click chuột phải vào file/thư mục
+- Hiển thị thông tin chi tiết của file/thư mục khi được chọn
+- Hiển thị biểu tượng khác nhau cho các loại file khác nhau
+- Hỗ trợ xem trước (preview) cho các loại file phổ biến (hình ảnh, PDF, văn bản)
+- Hiển thị thanh tiến trình khi tải lên/tải xuống file
+- Hiển thị thông báo khi có file mới được chia sẻ
+- Hỗ trợ tìm kiếm file với bộ lọc (filter) theo loại file, ngày tạo, kích thước
+- Hiển thị phần quản lý quyền truy cập khi chia sẻ file
+
+## Yêu cầu về tài liệu
+- Tạo folder docs trong dự án
+- Tạo file prompt.txt tổng hợp tất cả các yêu cầu từ đầu đến giờ
+- Tạo file ERD.md mô tả lược đồ cơ sở dữ liệu của dự án
+- Tạo file project-description.md mô tả tổng quan về dự án
+- Tạo file UI-mockup.md mô tả giao diện người dùng cho các module chính
